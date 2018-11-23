@@ -1,0 +1,99 @@
+{
+    "elasticsearch": {
+        "httpAuth": "",
+        "host": "https://healthsworth.tk/api/catalog",
+        "index": "vue_storefront_catalog"
+    },
+    "storeViews": {
+        "mapStoreUrlsFor": [
+            "de",
+            "it"
+        ],
+        "multistore": true,
+        "de": {
+            "disabled": false,
+            "elasticsearch": {
+                "httpAuth": "",
+                "host": "https://healthsworth.tk/api/catalog",
+                "index": "vue_storefront_catalog_de"
+            }
+        },
+        "it": {
+            "disabled": false,
+            "elasticsearch": {
+                "httpAuth": "",
+                "host": "https://healthsworth.tk/api/catalog",
+                "index": "vue_storefront_catalog_it"
+            }
+        }
+    },
+    "cart": {
+        "synchronize": true,
+        "synchronize_totals": true,
+        "create_endpoint": "https://healthsworth.tk/api/cart/create?token={{token}}",
+        "updateitem_endpoint": "https://healthsworth.tk/api/cart/update?token={{token}}&cartId={{cartId}}",
+        "deleteitem_endpoint": "https://healthsworth.tk/api/cart/delete?token={{token}}&cartId={{cartId}}",
+        "pull_endpoint": "https://healthsworth.tk/api/cart/pull?token={{token}}&cartId={{cartId}}",
+        "totals_endpoint": "https://healthsworth.tk/api/cart/totals?token={{token}}&cartId={{cartId}}",
+        "paymentmethods_endpoint": "https://healthsworth.tk/api/cart/payment-methods?token={{token}}&cartId={{cartId}}",
+        "shippingmethods_endpoint": "https://healthsworth.tk/api/cart/shipping-methods?token={{token}}&cartId={{cartId}}",
+        "shippinginfo_endpoint": "https://healthsworth.tk/api/cart/shipping-information?token={{token}}&cartId={{cartId}}",
+        "collecttotals_endpoint": "https://healthsworth.tk/api/cart/collect-totals?token={{token}}&cartId={{cartId}}",
+        "deletecoupon_endpoint": "https://healthsworth.tk/api/cart/delete-coupon?token={{token}}&cartId={{cartId}}",
+        "applycoupon_endpoint": "https://healthsworth.tk/api/cart/apply-coupon?token={{token}}&cartId={{cartId}}&coupon={{coupon}}"
+    },
+    "products": {
+        "preventConfigurableChildrenDirectAccess": true,
+        "alwaysSyncPlatformPricesOver": false,
+        "clearPricesBeforePlatformSync": false,
+        "waitForPlatformSync": false,
+        "endpoint": "https://healthsworth.tk/api/product",
+        "defaultFilters": [
+            "color",
+            "size",
+            "price"
+        ]
+    },
+    "orders": {
+        "endpoint": "https://healthsworth.tk/api/order"
+    },
+    "images": {
+        "baseUrl": "https://healthsworth.tk/img/"
+    },
+    "users": {
+        "endpoint": "https://healthsworth.tk/api/user",
+        "history_endpoint": "https://healthsworth.tk/api/user/order-history?token={{token}}",
+        "resetPassword_endpoint": "https://healthsworth.tk/api/user/reset-password",
+        "changePassword_endpoint": "https://healthsworth.tk/api/user/change-password?token={{token}}",
+        "login_endpoint": "https://healthsworth.tk/api/user/login",
+        "create_endpoint": "https://healthsworth.tk/api/user/create",
+        "me_endpoint": "https://healthsworth.tk/api/user/me?token={{token}}",
+        "refresh_endpoint": "https://healthsworth.tk/api/user/refresh"
+    },
+    "stock": {
+        "endpoint": "https://healthsworth.tk/api/stock"
+    },
+    "tax": {
+        "defaultCountry": "PL",
+        "defaultRegion": "",
+        "calculateServerSide": true
+    },
+    "i18n": {
+        "defaultCountry": "US",
+        "defaultLanguage": "EN"
+    },
+    "mailchimp": {
+        "endpoint": "https://healthsworth.tk/api/ext/mailchimp-subscribe/subscribe"
+    },
+    "registeredExtensions": [
+        "custom_extension",
+        "mailchimp-subscribe",
+        "google-analytics"
+    ],
+    "demomode": true,
+    "analytics": {
+        "id": "UA-108235765-2"
+    },
+    "theme": "@vue-storefront/healthsworth"
+
+}
