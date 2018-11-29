@@ -7,7 +7,8 @@
     "storeViews": {
         "mapStoreUrlsFor": [
             "de",
-            "it"
+            "it",
+            "nlbe"
         ],
         "multistore": true,
         "de": {
@@ -24,6 +25,14 @@
                 "httpAuth": "",
                 "host": "https://healthsworth.tk/api/catalog",
                 "index": "vue_storefront_catalog_it"
+            }
+        },
+        "nl": {
+            "disabled": false,
+            "elasticsearch": {
+                "httpAuth": "",
+                "host": "https://healthsworth.tk/api/catalog",
+                "index": "vue_storefront_catalog_nlbe"
             }
         }
     },
@@ -95,5 +104,4 @@
         "id": "UA-108235765-2"
     },
     "theme": "@vue-storefront/healthsworth"
-
 }

@@ -1,20 +1,16 @@
 <template>
   <div id="home">
     <main-slider />
-
-    <promoted-offers/>
-
     <section class="new-collection container px15">
       <div>
         <header class="col-md-12">
-          <h2 class="align-center cl-accent">{{ $t('Special Offer') }}</h2>
+          <h2 class="align-center cl-accent">{{ $t('Special Offers') }}</h2>
         </header>
       </div>
       <div class="row center-xs">
         <product-listing columns="4" :products="everythingNewCollection" />
       </div>
     </section>
-
   </div>
 </template>
 
@@ -29,15 +25,11 @@ import Home from '@vue-storefront/core/pages/Home'
 import ProductListing from 'theme/components/core/ProductListing'
 import MainSlider from 'theme/components/core/blocks/MainSlider/MainSlider'
 
-// Theme local components
-import PromotedOffers from 'theme/components/theme/blocks/PromotedOffers/PromotedOffers'
-
 export default {
   mixins: [Home],
   components: {
     MainSlider,
-    ProductListing,
-    PromotedOffers
+    ProductListing
   },
   computed: {
     categories () {
@@ -66,7 +58,7 @@ export default {
     return new Promise((resolve, reject) => {
       console.log('Entering asyncData for Home ' + new Date())
 
-      let newProductsQuery = prepareQuery({ queryConfig: 'newProducts' })
+      let newProductsQuery = prepareQuery({ queryConfig: ' ' })
       let coolBagsQuery = prepareQuery({ queryConfig: 'coolBags' })
 
       store.dispatch('category/list', { includeFields: config.entities.optimize ? config.entities.category.includeFields : null }).then((categories) => {

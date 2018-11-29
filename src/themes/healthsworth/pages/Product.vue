@@ -124,10 +124,6 @@
         </section>
       </div>
     </section>
-    <related-products
-      type="upsell"
-      :heading="$t('We found other products you might like')"
-    />
     <tabs>
       <tab name="Details" :selected="true">
         <section class="container px15 pt50 pb35 cl-accent details">
@@ -143,16 +139,11 @@
                   v-html="product.description"
                 />
               </div>
-              <div class="col-xs-12 col-sm-5">
-                <ul class="attributes p0 pt5 m0">
-                  <product-attribute
-                    :key="attr.attribute_code"
-                    v-for="attr in customAttributes"
-                    :product="product"
-                    :attribute="attr"
-                    empty-placeholder="N/A"
-                  />
-                </ul>
+              <div class="col-xs-12 col-sm-6">
+                <div
+                  class="lh30 h5"
+                  v-html="product.short_description"
+                />
               </div>
               <div
                 class="details-overlay"
@@ -166,8 +157,10 @@
         <reviews v-show="OnlineOnly"/>
       </tab>
     </tabs>
-    <promoted-offers single-banner />
-    <related-products type="related" />
+    <related-products
+      type="upsell"
+      :heading="$t('We found other products you might like')"
+    />
   </div>
 </template>
 
