@@ -33,207 +33,6 @@
       <div class="hidden-xs col-sm-2 col-md-1"/>
       <div class="col-xs-11 col-sm-9 col-md-10">
         <div class="row" v-if="isActive">
-          <base-checkbox
-            class="col-xs-12 mb15"
-            id="sendToShippingAddressCheckbox"
-            v-model="sendToShippingAddress"
-            @click="useShippingAddress"
-          >
-            {{ $t('Copy address data from shipping') }}
-          </base-checkbox>
-
-          <base-checkbox
-            v-if="hasBillingData()"
-            class="col-xs-12 mb15"
-            id="sendToBillingAddressCheckbox"
-            v-model="sendToBillingAddress"
-            @click="useBillingAddress"
-          >
-            {{ $t('Use my billing data') }}
-          </base-checkbox>
-
-          <base-input
-            class="col-xs-12 col-sm-6 mb25"
-            type="text"
-            name="first-name"
-            :placeholder="$t('First name *')"
-            v-model.trim="payment.firstName"
-            @blur="$v.payment.firstName.$touch()"
-            autocomplete="given-name"
-            :validations="[
-              {
-                condition: $v.payment.firstName.$error && !$v.payment.firstName.required,
-                text: $t('Field is required')
-              },
-              {
-                condition: !$v.payment.firstName.minLength,
-                text: $t('Name must have at least 3 letters.')
-              }
-            ]"
-          />
-
-          <base-input
-            class="col-xs-12 col-sm-6 mb25"
-            type="text"
-            name="last-name"
-            :placeholder="$t('Last name *')"
-            v-model.trim="payment.lastName"
-            @blur="$v.payment.lastName.$touch()"
-            autocomplete="family-name"
-            :validation="{
-              condition: $v.payment.lastName.$error && !$v.payment.lastName.required,
-              text: $t('Field is required')
-            }"
-          />
-
-          <base-input
-            class="col-xs-12 mb25"
-            type="text"
-            name="street-address"
-            :placeholder="$t('Street name *')"
-            v-model.trim="payment.streetAddress"
-            @blur="$v.payment.streetAddress.$touch()"
-            autocomplete="address-line1"
-            :validation="{
-              condition: $v.payment.streetAddress.$error && !$v.payment.streetAddress.required,
-              text: $t('Field is required')
-            }"
-          />
-
-          <base-input
-            class="col-xs-12 mb25"
-            type="text"
-            name="apartment-number"
-            :placeholder="$t('House/Apartment number *')"
-            v-model.trim="payment.apartmentNumber"
-            @blur="$v.payment.apartmentNumber.$touch()"
-            autocomplete="address-line2"
-            :validation="{
-              condition: $v.payment.apartmentNumber.$error && !$v.payment.apartmentNumber.required,
-              text: $t('Field is required')
-            }"
-          />
-
-          <base-input
-            class="col-xs-12 col-sm-6 mb25"
-            type="text"
-            name="city"
-            :placeholder="$t('City *')"
-            v-model.trim="payment.city"
-            @blur="$v.payment.city.$touch()"
-            autocomplete="address-level2"
-            :validation="{
-              condition: $v.payment.city.$error && !$v.payment.city.required,
-              text: $t('Field is required')
-            }"
-          />
-
-          <base-input
-            class="col-xs-12 col-sm-6 mb25"
-            type="text"
-            name="state"
-            :placeholder="$t('State / Province')"
-            v-model.trim="payment.state"
-            autocomplete="address-level1"
-          />
-
-          <base-input
-            class="col-xs-12 col-sm-6 mb25"
-            type="text"
-            name="zip-code"
-            :placeholder="$t('Zip-code *')"
-            v-model.trim="payment.zipCode"
-            @blur="$v.payment.zipCode.$touch()"
-            autocomplete="postal-code"
-            :validations="[
-              {
-                condition: $v.payment.zipCode.$error && !$v.payment.zipCode.required,
-                text: $t('Field is required')
-              },
-              {
-                condition: !$v.payment.zipCode.minLength,
-                text: $t('Zip-code must have at least 3 letters.')
-              }
-            ]"
-          />
-
-          <base-select
-            class="col-xs-12 col-sm-6 mb25"
-            name="countries"
-            :options="countryOptions"
-            :selected="payment.country"
-            :placeholder="$t('Country *')"
-            :validations="[
-              {
-                condition: $v.payment.country.$error && !$v.payment.country.required,
-                text: $t('Field is required')
-              }
-            ]"
-            v-model="payment.country"
-            autocomplete="country-name"
-            @blur="$v.payment.country.$touch()"
-            @change="$v.payment.country.$touch()"
-          />
-
-          <base-input
-            class="col-xs-12 mb25"
-            type="text"
-            name="phone-number"
-            :placeholder="$t('Phone Number')"
-            v-model.trim="payment.phoneNumber"
-            autocomplete="tel"
-          />
-
-          <base-checkbox
-            class="col-xs-12 mb15"
-            id="generateInvoiceCheckbox"
-            v-model="generateInvoice"
-            @click="useGenerateInvoice"
-          >
-            {{ $t('I want to generate an invoice for the company') }}
-          </base-checkbox>
-
-          <template v-if="generateInvoice">
-            <base-input
-              class="col-xs-12 mb25"
-              type="text"
-              name="company-name"
-              :placeholder="$t('Company name *')"
-              v-model.trim="payment.company"
-              @blur="$v.payment.company.$touch()"
-              autocomplete="organization"
-              :validation="{
-                condition: $v.payment.company.$error && !$v.payment.company.required,
-                text: $t('Field is required')
-              }"
-            />
-
-            <base-input
-              class="col-xs-12 mb25"
-              type="text"
-              name="tax-id"
-              :placeholder="$t('Tax identification number *')"
-              v-model.trim="payment.taxId"
-              @blur="$v.payment.taxId.$touch()"
-              autocomplete="tax-id"
-              :validations="[
-                {
-                  condition: $v.payment.taxId.$error && !$v.payment.taxId.required,
-                  text: $t('Field is required')
-                },
-                {
-                  condition: !$v.payment.taxId.minLength,
-                  text: $t('Tax identification number must have at least 3 letters.')
-                }
-              ]"
-            />
-
-            <div class="col-xs-12 mb25">
-              <label class="fs16">
-                {{ $t('We will send you the invoice to given e-mail address') }}
-              </label>
-            </div>
-          </template>
 
           <div class="col-xs-12">
             <h4>
@@ -241,8 +40,9 @@
             </h4>
           </div>
           <div v-for="(method, index) in paymentMethods" :key="index" class="col-md-6">
-            <label class="radioStyled"> {{ method.title ? method.title : method.name }}
+            <label v-if="method.name !== 'Stripe'" class="radioStyled"> {{ $t(method.title ? method.title : method.name) }}
               <input
+                v-if="method.name !== 'Stripe'"
                 type="radio"
                 :value="method.code"
                 name="payment-method"
@@ -314,7 +114,7 @@
 </template>
 
 <script>
-import { required, minLength } from 'vuelidate/lib/validators'
+import { required } from 'vuelidate/lib/validators'
 import Payment from '@vue-storefront/core/components/blocks/Checkout/Payment'
 
 import BaseCheckbox from 'theme/components/core/blocks/Form/BaseCheckbox'
@@ -343,73 +143,10 @@ export default {
     }
   },
   validations () {
-    if (!this.generateInvoice) {
-      return {
-        payment: {
-          firstName: {
-            required,
-            minLength: minLength(3)
-          },
-          lastName: {
-            required
-          },
-          country: {
-            required
-          },
-          streetAddress: {
-            required
-          },
-          apartmentNumber: {
-            required
-          },
-          zipCode: {
-            required,
-            minLength: minLength(3)
-          },
-          city: {
-            required
-          },
-          paymentMethod: {
-            required
-          }
-        }
-      }
-    } else {
-      return {
-        payment: {
-          firstName: {
-            required,
-            minLength: minLength(3)
-          },
-          lastName: {
-            required
-          },
-          company: {
-            required
-          },
-          taxId: {
-            required,
-            minLength: minLength(3)
-          },
-          country: {
-            required
-          },
-          streetAddress: {
-            required
-          },
-          apartmentNumber: {
-            required
-          },
-          zipCode: {
-            required,
-            minLength: minLength(4)
-          },
-          city: {
-            required
-          },
-          paymentMethod: {
-            required
-          }
+    return {
+      payment: {
+        paymentMethod: {
+          required
         }
       }
     }

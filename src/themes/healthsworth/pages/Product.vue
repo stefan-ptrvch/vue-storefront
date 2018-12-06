@@ -61,19 +61,6 @@
               v-else-if="product.custom_options && product.custom_options.length > 0 && !loading"
               :product="product"
             />
-            <div class="row m0 mb15" v-if="product.type_id !== 'grouped' && product.type_id !== 'bundle'">
-              <div>
-                <label class="qty-label flex" for="quantity">{{ $t('Quantity') }}</label>
-                <input
-                  type="number"
-                  min="0"
-                  class="m0 no-outline qty-input py10 brdr-cl-primary bg-cl-transparent h4"
-                  id="quantity"
-                  focus
-                  v-model="product.qty"
-                >
-              </div>
-            </div>
             <div class="row m0">
               <add-to-cart
                 :product="product"

@@ -3,10 +3,26 @@
     {
       "title": "Healthsworth",
       "subtitle": "Welcome To",
-      "button_text": "Shop now",
+      "button_text": "Shop Now!",
+      "image": "/assets/slide_01.jpg",
+      "link": "/c/alle-producten-10"
+    },
+    {
+      "title": "Healthsworth",
+      "subtitle": "Welcome To",
+      "button_text": "Shop Now!",
+      "image": "/assets/slide_01.jpg",
+      "link": "/c/all-products-2"
+    },
+    {
+      "title": "Healthsworth",
+      "subtitle": "Willkommen bei",
+      "button_text": "Jetzt shoppen!",
       "image": "/assets/slide_01.jpg",
       "link": "/c/alle-produkte-6"
     }
   ],
-  "total": "3"
+  "total": "1"
 }
+
+

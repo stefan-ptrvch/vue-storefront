@@ -8,7 +8,7 @@
         "mapStoreUrlsFor": [
             "de",
             "it",
-            "nlbe"
+            "nl"
         ],
         "multistore": true,
         "de": {
@@ -32,7 +32,7 @@
             "elasticsearch": {
                 "httpAuth": "",
                 "host": "https://healthsworth.tk/api/catalog",
-                "index": "vue_storefront_catalog_nlbe"
+                "index": "vue_storefront_catalog_nl"
             }
         }
     },

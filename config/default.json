@@ -1,7 +1,7 @@
 {
     "server": {
       "host": "localhost",
-      "port": 3000,
+      "port": 3003,
       "protocol": "http",
       "api": "api",
       "useOutputCacheTagging": false,
@@ -46,7 +46,7 @@
     "defaultStoreCode": "",
     "storeViews": {
       "multistore": false,
-      "mapStoreUrlsFor": ["de", "it", "nlbe"],
+      "mapStoreUrlsFor": ["de", "it", "nl"],
       "de": {
         "storeCode": "de",
         "disabled": true,
@@ -70,7 +70,7 @@
           "defaultCountry": "DE",
           "defaultLocale": "de-DE",
           "currencyCode": "EUR",
-          "currencySign": "EUR",
+          "currencySign": "€",
           "dateFormat": "HH:mm D-M-YYYY"
         }
       },
@@ -97,19 +97,19 @@
           "defaultLanguage": "IT",
           "defaultLocale": "it-IT",
           "currencyCode": "EUR",
-          "currencySign": "EUR",
+          "currencySign": "€",
           "dateFormat": "HH:mm D-M-YYYY"
         }
       },
-      "nlbe": {
-        "storeCode": "nlbe",
+      "nl": {
+        "storeCode": "nl",
         "disabled": true,
-        "storeId": 4,
+        "storeId": 3,
         "name": "Dutch Store",
-        "url": "/nlbe",
+        "url": "/nl",
         "elasticsearch": {
           "host": "localhost:8080/api/catalog",
-          "index": "vue_storefront_catalog_nlbe"
+          "index": "vue_storefront_catalog_nl"
         },
         "tax": {
           "sourcePriceIncludesTax": false,
@@ -119,12 +119,12 @@
         },
         "i18n": {
           "fullCountryName": "Netherlands",
-          "fullLanguageName": "Dutch",
-          "defaultCountry": "NL",
+          "fullLanguageName": "Netherlands",
           "defaultLanguage": "NL",
+          "defaultCountry": "NL",
           "defaultLocale": "nl-NL",
           "currencyCode": "EUR",
-          "currencySign": "EUR",
+          "currencySign": "€",
           "dateFormat": "HH:mm D-M-YYYY"
         }
       }

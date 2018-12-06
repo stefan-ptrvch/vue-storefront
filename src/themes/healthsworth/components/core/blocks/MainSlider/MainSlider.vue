@@ -32,6 +32,7 @@
 <script>
 import NoSSR from 'vue-no-ssr'
 import { Carousel, Slide } from 'vue-carousel'
+import { currentStoreView } from '@vue-storefront/store/lib/multistore'
 import sliderData from 'theme/resource/slider.json'
 
 import MainSlider from '@vue-storefront/core/components/blocks/MainSlider/MainSlider'
@@ -47,6 +48,19 @@ export default {
   mixins: [MainSlider],
   created () {
     this.updateSliderData(sliderData)
+    // Set the slide data to the current store (actually used as banner)
+    const storeView = currentStoreView()
+    this.defCount = storeView.defaultCountry
+    if (storeView.defaultCountry === 'United States') {
+      this.slides[0] = sliderData.slides[1]
+      this.slides.pop()
+    } else {
+      this.slides.pop()
+      this.slides.pop()
+    }
+  },
+  data () {
+    return {defCount: String}
   }
 }
 </script>
