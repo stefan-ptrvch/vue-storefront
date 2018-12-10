@@ -9,14 +9,43 @@
             </h1>
           </div>
           <personal-details
+            ref="persDetails"
             class="line relative"
             :is-active="activeSection.personalDetails"
             :focused-field="focusedField"
-          />
-          <shipping class="line relative" :is-active="activeSection.shipping"/>
-          <payment class="line relative" :is-active="activeSection.payment"/>
-          <order-review class="line relative" :is-active="activeSection.orderReview"/>
+            @valid="persDetailsReady=$event" />
+          <shipping
+            ref="shipping"
+            class="line relative"
+            :is-active="activeSection.shipping"
+            @valid="shippingReady=$event"/>
+          <payment
+            ref="payment"
+            class="line relative"
+            :is-active="activeSection.payment"/>
+          <order-review
+            ref="orderOverview"
+            class="line relative"
+            :is-active="activeSection.orderReview"
+            @valid="overviewReady=$event"/>
           <div id="custom-steps"/>
+
+          <div class="row" v-if="true">
+            <div class="hidden-xs col-sm-2 col-md-1"/>
+            <div class="col-xs-12 col-sm-9 col-md-11">
+              <div class="row">
+                <div class="col-xs-12 col-md-8 my30 px20">
+                  <button-full
+                    @click.native="submitOrder"
+                    :disabled="!allDataReady"
+                  >
+                    {{ $t('Place the order') }}
+                  </button-full>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="hidden-xs col-sm-5 bg-cl-secondary">
           <cart-summary />
@@ -36,6 +65,7 @@ import Payment from 'theme/components/core/blocks/Checkout/Payment'
 import OrderReview from 'theme/components/core/blocks/Checkout/OrderReview'
 import CartSummary from 'theme/components/core/blocks/Checkout/CartSummary'
 import ThankYouPage from 'theme/components/core/blocks/Checkout/ThankYouPage'
+import ButtonFull from 'theme/components/theme/ButtonFull'
 
 export default {
   components: {
@@ -44,9 +74,44 @@ export default {
     Payment,
     OrderReview,
     CartSummary,
-    ThankYouPage
+    ThankYouPage,
+    ButtonFull
   },
-  mixins: [Checkout]
+  mixins: [Checkout],
+  mounted () {
+    // Make all checkout components visible
+    this.activeSection.personalDetails = true
+    this.activeSection.shipping = true
+    this.activeSection.payment = true
+    this.activeSection.orderReview = true
+  },
+  data () {
+    return {
+      persDetailsReady: false,
+      shippingReady: false,
+      paymentReady: true,
+      overviewReady: false
+    }
+  },
+  methods: {
+
+    submitOrder () {
+      // Call the submission methods of the components
+      this.$refs.persDetails.sendDataToCheckout()
+      this.$refs.shipping.sendDataToCheckout()
+      this.$refs.payment.sendDataToCheckout()
+      this.$refs.orderOverview.placeOrder()
+    }
+  },
+
+  computed: {
+    allDataReady () {
+      return this.persDetailsReady &&
+        this.shippingReady &&
+        this.paymentReady &&
+        this.overviewReady
+    }
+  }
 }
 </script>
 

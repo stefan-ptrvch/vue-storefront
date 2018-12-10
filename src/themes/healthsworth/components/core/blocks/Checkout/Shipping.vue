@@ -1,34 +1,5 @@
 <template>
   <div class="pt20">
-    <div class="row pl20">
-      <div class="col-xs-1 col-sm-2 col-md-1">
-        <div
-          class="number-circle lh35 cl-white brdr-circle align-center weight-700"
-          :class="{ 'bg-cl-th-accent' : isActive || isFilled, 'bg-cl-tertiary' : !isFilled && !isActive }"
-        >
-          2
-        </div>
-      </div>
-      <div class="col-xs-11 col-sm-9 col-md-11">
-        <div class="row mb15">
-          <div class="col-xs-12 col-md-7" :class="{ 'cl-bg-tertiary' : !isFilled && !isActive }">
-            <h3 class="m0 mb5">
-              {{ $t('Shipping') }}
-            </h3>
-          </div>
-          <div class="col-xs-12 col-md-5 pr30">
-            <div class="lh30 flex end-lg" v-if="isFilled && !isActive">
-              <a href="#" class="cl-tertiary flex" @click.prevent="edit">
-                <span class="pr5">
-                  {{ $t('Edit shipping') }}
-                </span>
-                <i class="material-icons cl-tertiary">edit</i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="row pl20" v-if="isActive">
       <div class="hidden-xs col-sm-2 col-md-1"/>
       <div class="col-xs-11 col-sm-9 col-md-10">
@@ -48,7 +19,8 @@
             v-model="shipping.country"
             autocomplete="country-name"
             @blur="$v.shipping.country.$touch()"
-            @change="$v.shipping.country.$touch(); changeCountry();"
+            @change="$v.shipping.country.$touch(); changeCountry();
+                     emitValidation()"
           />
 
           <base-input
@@ -59,6 +31,7 @@
             v-model.trim="shipping.phoneNumber"
             autocomplete="tel"
             @blur="$v.shipping.phoneNumber.$touch()"
+            @keyup="emitValidation()"
             :validations="[
               {
                 condition: $v.shipping.phoneNumber.$error && !$v.shipping.phoneNumber.required,
@@ -66,41 +39,6 @@
               }
             ]"
           />
-
-          <h4 class="col-xs-12">
-            {{ $t('Shipping method') }}
-          </h4>
-          <div v-for="(method, index) in shippingMethods" :key="index" class="col-md-6">
-            <label class="radioStyled"> {{ method.method_title }} | {{ method.amount | price }}
-              <input
-                type="radio"
-                :value="method.method_code"
-                name="shipping-method"
-                v-model="shipping.shippingMethod"
-                @change="$v.shipping.shippingMethod.$touch(); changeShippingMethod();"
-              >
-              <span class="checkmark"/>
-            </label>
-          </div>
-          <span class="validation-error" v-if="$v.shipping.shippingMethod.$error && !$v.shipping.shippingMethod.required">
-            {{ $t('Field is required') }}
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="row" v-if="isActive">
-      <div class="hidden-xs col-sm-2 col-md-1"/>
-      <div class="col-xs-12 col-sm-9 col-md-11">
-        <div class="row">
-          <div class="col-xs-12 col-md-8 my30 px20">
-            <button-full
-              data-testid="shippingSubmit"
-              @click.native="sendDataToCheckout"
-              :disabled="$v.shipping.$invalid"
-            >
-              {{ $t('Continue to payment') }}
-            </button-full>
-          </div>
         </div>
       </div>
     </div>
@@ -116,17 +54,6 @@
             <div v-if="shipping.phoneNumber">
               <span class="pr15">{{ shipping.phoneNumber }}</span>
               <tooltip>{{ $t('Phone number may be needed by carrier') }}</tooltip>
-            </div>
-            <div class="col-xs-12">
-              <h4>
-                {{ $t('Shipping method') }}
-              </h4>
-            </div>
-            <div class="col-md-6 mb15">
-              <label class="radioStyled"> {{ getShippingMethod().method_title }} | {{ getShippingMethod().amount | price }}
-                <input type="radio" value="" checked disabled name="chosen-shipping-method">
-                <span class="checkmark"/>
-              </label>
             </div>
           </div>
         </div>
@@ -156,6 +83,11 @@ export default {
     BaseSelect
   },
   mixins: [shipping],
+  methods: {
+    emitValidation () {
+      this.$emit('valid', !(this.$v.shipping.$invalid))
+    }
+  },
   computed: {
     countryOptions () {
       return this.countries.map((item) => {
@@ -173,10 +105,12 @@ export default {
     this.shipping.apartmentNumber = '123'
     this.shipping.zipCode = '123'
     this.shipping.city = 'Asd'
+    this.shipping.shippingMethod = 'flatrate'
     if (currentStoreView().storeCode === 'nl') {
       this.shipping.country = 'NL'
       this.changeCountry()
     }
+    this.emitValidation()
   },
   validations: {
     shipping: {

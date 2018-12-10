@@ -1,34 +1,5 @@
 <template>
   <div class="payment pt20">
-    <div class="row pl20">
-      <div class="col-xs-1 col-sm-2 col-md-1">
-        <div
-          class="number-circle lh35 cl-white brdr-circle align-center weight-700"
-          :class="{ 'bg-cl-th-accent' : isActive || isFilled, 'bg-cl-tertiary' : !isFilled && !isActive }"
-        >
-          3
-        </div>
-      </div>
-      <div class="col-xs-11 col-sm-9 col-md-11">
-        <div class="row mb15">
-          <div class="col-xs-12 col-md-7" :class="{ 'cl-bg-tertiary' : !isFilled && !isActive }">
-            <h3 class="m0 mb5">
-              {{ $t('Payment') }}
-            </h3>
-          </div>
-          <div class="col-xs-12 col-md-5 pr30">
-            <div class="lh30 flex end-lg" v-if="isFilled && !isActive">
-              <a href="#" class="cl-tertiary flex" @click.prevent="edit">
-                <span class="pr5">
-                  {{ $t('Edit payment') }}
-                </span>
-                <i class="material-icons cl-tertiary">edit</i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="row pl20" v-if="isActive">
       <div class="hidden-xs col-sm-2 col-md-1"/>
       <div class="col-xs-11 col-sm-9 col-md-10">
@@ -53,22 +24,6 @@
             </label>
           </div>
           <span class="validation-error" v-if="!$v.payment.paymentMethod.required">{{ $t('Field is required') }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="row" v-if="isActive">
-      <div class="hidden-xs col-sm-2 col-md-1"/>
-      <div class="col-xs-12 col-sm-9 col-md-11">
-        <div class="row">
-          <div class="col-xs-12 col-md-8 px20 my30">
-            <button-full
-              @click.native="sendDataToCheckout"
-              data-testid="paymentSubmit"
-              :disabled="$v.payment.$invalid"
-            >
-              {{ $t('Go review the order') }}
-            </button-full>
-          </div>
         </div>
       </div>
     </div>

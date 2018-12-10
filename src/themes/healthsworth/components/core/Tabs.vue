@@ -5,7 +5,7 @@
         <li v-for="tab in tabs" :key="tab.name" :class="{ 'is-active': tab.isActive }">
           <a :href="tab.href" @click="selectTab(tab)">
             <h2 class="h3 m0 mb10 serif lh20 details-title">
-              {{ tab.name }}
+              {{ $t(tab.name) }}
             </h2>
           </a>
 

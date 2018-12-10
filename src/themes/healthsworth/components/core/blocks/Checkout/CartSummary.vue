@@ -28,8 +28,7 @@
     </div>
     <div class="py50 px25">
       <p class="cl-tertiary lh20">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Nullam sed tempor lorem. Vivamus volutpat eros id est semper accumsan.
+        {{ $t('Thank you for placing your order. Our sales department will contact you shortly to confirm your order.') }}
       </p>
     </div>
   </div>

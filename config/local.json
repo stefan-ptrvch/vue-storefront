@@ -1,7 +1,7 @@
 {
     "elasticsearch": {
         "httpAuth": "",
-        "host": "https://healthsworth.tk/api/catalog",
+        "host": "https://healthsworth.com/api/catalog",
         "index": "vue_storefront_catalog"
     },
     "storeViews": {
@@ -15,7 +15,7 @@
             "disabled": false,
             "elasticsearch": {
                 "httpAuth": "",
-                "host": "https://healthsworth.tk/api/catalog",
+                "host": "https://healthsworth.com/api/catalog",
                 "index": "vue_storefront_catalog_de"
             }
         },
@@ -23,7 +23,7 @@
             "disabled": false,
             "elasticsearch": {
                 "httpAuth": "",
-                "host": "https://healthsworth.tk/api/catalog",
+                "host": "https://healthsworth.com/api/catalog",
                 "index": "vue_storefront_catalog_it"
             }
         },
@@ -31,7 +31,7 @@
             "disabled": false,
             "elasticsearch": {
                 "httpAuth": "",
-                "host": "https://healthsworth.tk/api/catalog",
+                "host": "https://healthsworth.com/api/catalog",
                 "index": "vue_storefront_catalog_nl"
             }
         }
@@ -39,24 +39,24 @@
     "cart": {
         "synchronize": true,
         "synchronize_totals": true,
-        "create_endpoint": "https://healthsworth.tk/api/cart/create?token={{token}}",
-        "updateitem_endpoint": "https://healthsworth.tk/api/cart/update?token={{token}}&cartId={{cartId}}",
-        "deleteitem_endpoint": "https://healthsworth.tk/api/cart/delete?token={{token}}&cartId={{cartId}}",
-        "pull_endpoint": "https://healthsworth.tk/api/cart/pull?token={{token}}&cartId={{cartId}}",
-        "totals_endpoint": "https://healthsworth.tk/api/cart/totals?token={{token}}&cartId={{cartId}}",
-        "paymentmethods_endpoint": "https://healthsworth.tk/api/cart/payment-methods?token={{token}}&cartId={{cartId}}",
-        "shippingmethods_endpoint": "https://healthsworth.tk/api/cart/shipping-methods?token={{token}}&cartId={{cartId}}",
-        "shippinginfo_endpoint": "https://healthsworth.tk/api/cart/shipping-information?token={{token}}&cartId={{cartId}}",
-        "collecttotals_endpoint": "https://healthsworth.tk/api/cart/collect-totals?token={{token}}&cartId={{cartId}}",
-        "deletecoupon_endpoint": "https://healthsworth.tk/api/cart/delete-coupon?token={{token}}&cartId={{cartId}}",
-        "applycoupon_endpoint": "https://healthsworth.tk/api/cart/apply-coupon?token={{token}}&cartId={{cartId}}&coupon={{coupon}}"
+        "create_endpoint": "https://healthsworth.com/api/cart/create?token={{token}}",
+        "updateitem_endpoint": "https://healthsworth.com/api/cart/update?token={{token}}&cartId={{cartId}}",
+        "deleteitem_endpoint": "https://healthsworth.com/api/cart/delete?token={{token}}&cartId={{cartId}}",
+        "pull_endpoint": "https://healthsworth.com/api/cart/pull?token={{token}}&cartId={{cartId}}",
+        "totals_endpoint": "https://healthsworth.com/api/cart/totals?token={{token}}&cartId={{cartId}}",
+        "paymentmethods_endpoint": "https://healthsworth.com/api/cart/payment-methods?token={{token}}&cartId={{cartId}}",
+        "shippingmethods_endpoint": "https://healthsworth.com/api/cart/shipping-methods?token={{token}}&cartId={{cartId}}",
+        "shippinginfo_endpoint": "https://healthsworth.com/api/cart/shipping-information?token={{token}}&cartId={{cartId}}",
+        "collecttotals_endpoint": "https://healthsworth.com/api/cart/collect-totals?token={{token}}&cartId={{cartId}}",
+        "deletecoupon_endpoint": "https://healthsworth.com/api/cart/delete-coupon?token={{token}}&cartId={{cartId}}",
+        "applycoupon_endpoint": "https://healthsworth.com/api/cart/apply-coupon?token={{token}}&cartId={{cartId}}&coupon={{coupon}}"
     },
     "products": {
         "preventConfigurableChildrenDirectAccess": true,
         "alwaysSyncPlatformPricesOver": false,
         "clearPricesBeforePlatformSync": false,
         "waitForPlatformSync": false,
-        "endpoint": "https://healthsworth.tk/api/product",
+        "endpoint": "https://healthsworth.com/api/product",
         "defaultFilters": [
             "color",
             "size",
@@ -64,23 +64,23 @@
         ]
     },
     "orders": {
-        "endpoint": "https://healthsworth.tk/api/order"
+        "endpoint": "https://healthsworth.com/api/order"
     },
     "images": {
-        "baseUrl": "https://healthsworth.tk/img/"
+        "baseUrl": "https://healthsworth.com/img/"
     },
     "users": {
-        "endpoint": "https://healthsworth.tk/api/user",
-        "history_endpoint": "https://healthsworth.tk/api/user/order-history?token={{token}}",
-        "resetPassword_endpoint": "https://healthsworth.tk/api/user/reset-password",
-        "changePassword_endpoint": "https://healthsworth.tk/api/user/change-password?token={{token}}",
-        "login_endpoint": "https://healthsworth.tk/api/user/login",
-        "create_endpoint": "https://healthsworth.tk/api/user/create",
-        "me_endpoint": "https://healthsworth.tk/api/user/me?token={{token}}",
-        "refresh_endpoint": "https://healthsworth.tk/api/user/refresh"
+        "endpoint": "https://healthsworth.com/api/user",
+        "history_endpoint": "https://healthsworth.com/api/user/order-history?token={{token}}",
+        "resetPassword_endpoint": "https://healthsworth.com/api/user/reset-password",
+        "changePassword_endpoint": "https://healthsworth.com/api/user/change-password?token={{token}}",
+        "login_endpoint": "https://healthsworth.com/api/user/login",
+        "create_endpoint": "https://healthsworth.com/api/user/create",
+        "me_endpoint": "https://healthsworth.com/api/user/me?token={{token}}",
+        "refresh_endpoint": "https://healthsworth.com/api/user/refresh"
     },
     "stock": {
-        "endpoint": "https://healthsworth.tk/api/stock"
+        "endpoint": "https://healthsworth.com/api/stock"
     },
     "tax": {
         "defaultCountry": "PL",
@@ -92,7 +92,7 @@
         "defaultLanguage": "EN"
     },
     "mailchimp": {
-        "endpoint": "https://healthsworth.tk/api/ext/mailchimp-subscribe/subscribe"
+        "endpoint": "https://healthsworth.com/api/ext/mailchimp-subscribe/subscribe"
     },
     "registeredExtensions": [
         "custom_extension",
