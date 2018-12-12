@@ -132,10 +132,6 @@
                   v-html="product.short_description"
                 />
               </div>
-              <div
-                class="details-overlay"
-                @click="showDetails"
-              />
             </div>
           </div>
         </section>
@@ -317,7 +313,7 @@ $bg-secondary: color(secondary, $colors-background);
 .details-wrapper {
   @media (max-width: 767px) {
     position: relative;
-    max-height: 140px;
+    max-height: none;
     overflow: hidden;
     transition: all 0.3s ease;
     font-size: 14px;

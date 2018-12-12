@@ -314,7 +314,7 @@ const actions: ActionTree<CartState, RootState> = {
     if (rootStore.state.config.cart.synchronize && product.server_item_id) {
       dispatch('serverPull', { forceClientState: true })
     }
-  },  
+  },
   updateQuantity ({ commit, dispatch }, { product, qty, forceServerSilence = false }) {
     commit(types.CART_UPD_ITEM, { product, qty })
     if (rootStore.state.config.cart.synchronize && product.server_item_id && !forceServerSilence) {
@@ -609,7 +609,7 @@ const actions: ActionTree<CartState, RootState> = {
       Vue.prototype.$bus.$emit('servercart-after-diff', { diffLog: diffLog, serverItems: serverItems, clientItems: clientItems, dryRun: event.dry_run, event: event }) // send the difflog
       console.log('Server sync diff', diffLog)
     } else {
-      console.error(event.result) // override with guest cart   
+      console.error(event.result) // override with guest cart
       if (rootStore.state.cart.bypassCount < MAX_BYPASS_COUNT) {
         console.log('Bypassing with guest cart', rootStore.state.cart.bypassCount)
         rootStore.state.cart.bypassCount = rootStore.state.cart.bypassCount + 1
@@ -640,7 +640,8 @@ const actions: ActionTree<CartState, RootState> = {
       }
     } else {
       const isThisNewItemAddedToTheCart = (!originalCartItem || !originalCartItem.item_id)
-      if (isThisNewItemAddedToTheCart) {
+      // if (isThisNewItemAddedToTheCart) {
+      if (false) {
         let notificationData = {
           type: 'success',
           message: i18n.t('Product has been added to the cart!'),
