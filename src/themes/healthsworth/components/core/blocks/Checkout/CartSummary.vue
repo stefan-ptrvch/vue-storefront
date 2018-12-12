@@ -6,16 +6,6 @@
       </h3>
       <product v-for="product in productsInCart" :key="product.sku" :product="product"/>
       <div v-if="productsInCart && productsInCart.length" class="checkout bg-cl-secondary pt10 serif cl-accent">
-
-        <div v-for="(segment, index) in totals" :key="index" class="row pt15 pb20 pl30 pr55 " v-if="segment.code !== 'grand_total'">
-          <div class="col-xs cl-accent">
-            {{ segment.title }}
-          </div>
-          <div v-if="segment.value != null" class="col-xs align-right cl-accent h4">
-            {{ segment.value | price }}
-          </div>
-        </div>
-
         <div class="row pt20 pb20 pl30 pr55 weight-400 h3" v-for="(segment, index) in totals" :key="index" v-if="segment.code === 'grand_total'">
           <div class="col-xs">
             {{ $t(segment.title) }}

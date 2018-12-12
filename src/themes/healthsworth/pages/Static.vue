@@ -55,13 +55,7 @@ export default {
   data () {
     return {
       navigation: [
-        { title: i18n.t('About us'), link: '/about-us' },
-        { title: i18n.t('Customer service'), link: '/customer-service' },
-        { title: i18n.t('Store locator'), link: '/store-locator' },
-        { title: i18n.t('Delivery'), link: '/delivery' },
-        { title: i18n.t('Return policy'), link: '/returns' },
-        { title: i18n.t('Privacy policy'), link: '/privacy' },
-        { title: i18n.t('Contact us'), link: '/contact' }
+        { title: i18n.t('Privacy policy'), link: '/privacy' }
       ]
     }
   }

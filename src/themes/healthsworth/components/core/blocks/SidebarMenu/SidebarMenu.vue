@@ -54,24 +54,6 @@
               :parent-slug="category.slug"
             />
           </li>
-          <li @click="closeMenu">
-            <router-link
-              class="block px25 py20 brdr-bottom-1 brdr-cl-secondary cl-accent no-underline fs-medium-small"
-              :to="localizedRoute('/sale')"
-              exact
-            >
-              {{ $t('Sale') }}
-            </router-link>
-          </li>
-          <li @click="closeMenu">
-            <router-link
-              class="block px25 py20 brdr-bottom-1 brdr-cl-secondary cl-accent no-underline fs-medium-small"
-              :to="localizedRoute('/magazine')"
-              exact
-            >
-              {{ $t('Magazine') }}
-            </router-link>
-          </li>
           <li @click="closeMenu" v-if="compareIsActive">
             <router-link
               class="block px25 py20 brdr-bottom-1 brdr-cl-secondary cl-accent no-underline fs-medium-small"
